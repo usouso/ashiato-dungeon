@@ -152,7 +152,12 @@
     },
     greedy: {
       name: '周期を読まない',
-      choose(s, rng) { return bestOf(scoreActions(s, false), rng); },
+      // policy.waitProb：目標・成長方針はそのままに「待つ割合」だけを変える比較用。
+      // 隣に敵がいなければ、その確率で「待つ」を選ぶ（隣に敵がいる手は通常どおり判断する）
+      choose(s, rng, policy) {
+        if (policy && policy.waitProb > 0 && !meleeDangerAt(s, s.player.x, s.player.y) && rng() < policy.waitProb) return { type: 'wait' };
+        return bestOf(scoreActions(s, false), rng);
+      },
     },
     reader: {
       name: '周期を読む（比較用）',
@@ -165,7 +170,7 @@
     if (s.phase === 'levelup') return chooseLevelUp(s, rng, policy);
     if (s.phase === 'stairs') return { type: 'stairs', choice: 'descend' }; // ボットは常に潜る（到達フロアを測るため）
     if (s.phase !== 'play') return null;
-    return BOTS[botId].choose(s, rng);
+    return BOTS[botId].choose(s, rng, policy);
   }
 
   function runOne(botId, seed, opts) {
@@ -243,11 +248,29 @@
       L('| ' + BOTS[id].name + ' | ' + pct(r.winRate) + ' | ' + pct(r.deadRate) + ' | ' + pct(r.timeoutRate) + ' | ' + f2(r.meanFloor) + ' | ' + pct(r.floor3Rate) + ' | ' + f1(r.meanKills) + ' | ' + f1(r.meanTurns) + ' | ' + f1(r.meanDamage) + ' | ' + pct(r.waitRatio) + ' | ' + pct(r.deathBySkillRate) + ' | ' + pct(r.evolvedRate) + ' |');
     }
     L('');
-    L('判定1「待ち続けるだけが一番得」：待ち中心ボットの帰還率・平均到達フロアが、周期を読まないボットより高ければ赤信号。');
     const w = results.waiter, g = results.greedy, rd = results.reader;
-    L('- 待ち中心 ' + pct(w.winRate) + ' / ' + f2(w.meanFloor) + 'F　vs　周期を読まない ' + pct(g.winRate) + ' / ' + f2(g.meanFloor) + 'F　→ ' + (w.winRate > g.winRate || w.meanFloor > g.meanFloor ? '**赤信号（待ちが得）**' : '問題なし（待ちは得ではない）'));
+    L('参考：待ち中心 ' + pct(w.winRate) + ' / ' + f2(w.meanFloor) + 'F　vs　周期を読まない ' + pct(g.winRate) + ' / ' + f2(g.meanFloor) + 'F。' +
+      'ただし待ち中心は攻略目標（階段のみ）も違うので、この2つの差だけでは「待ちが得」とは言えない。判定1は下の「待ち割合だけを変えた比較」で見る。');
     L('判定2「残り歩数を読むと変わるか」：周期を読むボットが読まないボットより良ければ、残り歩数の情報に意味がある。');
     L('- 周期を読む ' + pct(rd.winRate) + ' / ' + f2(rd.meanFloor) + 'F / 被ダメ ' + f1(rd.meanDamage) + '　vs　読まない ' + pct(g.winRate) + ' / ' + f2(g.meanFloor) + 'F / 被ダメ ' + f1(g.meanDamage) + '　→ ' + (rd.winRate > g.winRate && rd.meanDamage < g.meanDamage ? '読む方が得（情報に意味がある）' : '**差が出ていない（要検討）**'));
+    L('');
+
+    L('### 判定1「待ち続けるだけが一番得」：目標・成長方針が同じで「待ち割合」だけが違う比較（周期を読まないボット）');
+    L('');
+    L('隣に敵がいない手で、決めた確率だけ「待つ」。それ以外の判断（近い敵へ寄って叩く→宝箱→階段、レベルアップはランダム）は全員同じ。');
+    L('');
+    L('| 待つ確率 | 実際の待ち割合 | 帰還率(3F踏破) | 死亡率 | 手数切れ | 平均到達フロア | 平均被ダメ | 平均所要手数 |');
+    L('|---|---|---|---|---|---|---|---|');
+    const WAIT_PROBS = [0, 0.3, 0.6, 0.8];
+    const waitRows = WAIT_PROBS.map(pw => ({ pw, r: runMany('greedy', n, { policy: { waitProb: pw } }) }));
+    for (const { pw, r } of waitRows) {
+      L('| ' + pct(pw) + ' | ' + pct(r.waitRatio) + ' | ' + pct(r.winRate) + ' | ' + pct(r.deadRate) + ' | ' + pct(r.timeoutRate) + ' | ' + f2(r.meanFloor) + ' | ' + f1(r.meanDamage) + ' | ' + f1(r.meanTurns) + ' |');
+    }
+    const base = waitRows[0].r;
+    const better = waitRows.slice(1).filter(({ r }) => r.winRate > base.winRate + 0.02);
+    L('');
+    L('- 待ちなし（0%）の帰還率 ' + pct(base.winRate) + ' に対し、待ちを増やした版が 2pt 以上高ければ赤信号 → ' +
+      (better.length ? '**赤信号（待つほど得：' + better.map(b => pct(b.pw) + '→' + pct(b.r.winRate)).join('、') + '）**' : '問題なし（待ちを増やしても帰還率は上がらない）'));
     L('');
 
     L('### 特定スキルだけが常に得か（周期を読まないボット、開始スキルを変え、レベルアップではそのスキルの強化を最優先・新スキルは取らない）');
