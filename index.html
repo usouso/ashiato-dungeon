@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>あしあとダンジョン（試作1）</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header id="top">
+    <div class="stat"><span class="label">フロア</span> <b id="floor-num">1</b><span class="dim">/3</span></div>
+    <div class="stat stat-hp">
+      <span class="label">体力</span> <b id="hp-num">30</b><span class="dim">/<span id="hp-max">30</span></span>
+      <div class="gauge hp-gauge"><div class="gauge-fill" id="hp-fill"></div></div>
+    </div>
+    <div class="stat"><span class="label">かけら</span> <b id="shard-num">0</b><span class="dim">/3</span></div>
+    <div class="stat"><span class="label">歩数</span> <b id="step-num">0</b></div>
+    <button id="btn-settings" type="button" class="btn small-btn">設定</button>
+  </header>
+
+  <div id="notice" class="notice hidden" role="status"></div>
+
+  <main id="main">
+    <section id="map-col">
+      <div id="map-wrap" aria-label="ダンジョンの地図">
+        <div id="map" class="map"></div>
+      </div>
+      <p id="floor-info" class="floor-info"></p>
+      <p class="legend">
+        <span class="swatch player"></span>自分　<span class="swatch rat"></span>かみつきネズミ　<span class="swatch lizard"></span>とびつきトカゲ　<span class="swatch caterpillar"></span>ほのおイモムシ
+        <span class="legend-mark player"></span>自分の足跡　<span class="legend-mark enemy"></span>敵の足跡　<span class="legend-mark blood"></span>血痕
+      </p>
+    </section>
+
+    <aside id="side">
+      <section class="panel" id="panel-skills">
+        <h2>スキル <span class="dim">（歩くと残りが減る）</span></h2>
+        <ul id="skill-list" class="list"></ul>
+      </section>
+      <section class="panel" id="panel-passives">
+        <h2>パッシブ</h2>
+        <ul id="passive-list" class="list"></ul>
+      </section>
+      <section class="panel" id="panel-enemies">
+        <h2>敵 <span class="dim">（発動までの残り歩数）</span></h2>
+        <ul id="enemy-list" class="list"></ul>
+      </section>
+      <section class="panel" id="panel-log">
+        <h2>できごと</h2>
+        <ol id="log" class="log"></ol>
+      </section>
+      <section class="panel" id="panel-zukan">
+        <h2>図鑑 <span class="dim">（見つけた組み合わせ）</span></h2>
+        <div id="zukan"></div>
+      </section>
+    </aside>
+  </main>
+
+  <footer id="controls">
+    <div class="dpad" aria-label="移動">
+      <button type="button" class="btn dir" data-dx="0" data-dy="-1" aria-label="上">↑</button>
+      <button type="button" class="btn dir" data-dx="-1" data-dy="0" aria-label="左">←</button>
+      <button type="button" class="btn wait" id="btn-wait">待つ</button>
+      <button type="button" class="btn dir" data-dx="1" data-dy="0" aria-label="右">→</button>
+      <button type="button" class="btn dir" data-dx="0" data-dy="1" aria-label="下">↓</button>
+    </div>
+    <p class="help">矢印キーで移動。敵の方へ進むと攻撃。スペースで待つ。宝箱と階段は歩いて乗る。</p>
+  </footer>
+
+  <div id="overlay" class="overlay hidden" role="dialog" aria-modal="true">
+    <div class="dialog" id="dialog"></div>
+  </div>
+
+  <div id="settings" class="overlay hidden" role="dialog" aria-modal="true">
+    <div class="dialog">
+      <h2>設定</h2>
+      <label class="row">
+        <span>音量</span>
+        <input id="opt-volume" type="range" min="0" max="100" step="5">
+        <b id="opt-volume-num">30</b>
+      </label>
+      <label class="row">
+        <span>画面の揺れ</span>
+        <select id="opt-shake">
+          <option value="off">切る</option>
+          <option value="weak">弱い</option>
+          <option value="mid">ふつう</option>
+        </select>
+      </label>
+      <p class="dim">音は2つだけ：発動が迫る音、発動した音。</p>
+      <div class="row">
+        <button type="button" class="btn" id="btn-settings-close">閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="sim.js"></script>
+<script src="bots.js"></script>
+<script src="ui.js"></script>
+</body>
+</html>
