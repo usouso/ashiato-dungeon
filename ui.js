@@ -110,10 +110,11 @@
   // ------------------------------------------------------------
   // 地図の組み立て
   // ------------------------------------------------------------
-  // マスの大きさ：最小28px（文字を小さくしない）。収まらない狭い画面では地図を横にスクロールする
+  // マスの大きさ：最小32px（頭上の残り歩数 13px と敵の文字が重ならない下限）。収まらない狭い画面では地図を横にスクロールする
+  const TILE_MIN = 32, TILE_MAX = 44;
   function tileSize() {
     const avail = mapWrap.clientWidth - 12;
-    return Math.max(28, Math.min(44, Math.floor(avail / Sim.W)));
+    return Math.max(TILE_MIN, Math.min(TILE_MAX, Math.floor(avail / Sim.W)));
   }
   function scrollToPlayer() {
     if (mapEl.offsetWidth <= mapWrap.clientWidth) return;
@@ -140,7 +141,6 @@
   function applyTileSize() {
     const ts = tileSize();
     mapEl.style.setProperty('--tile', ts + 'px');
-    mapEl.classList.toggle('small', ts < 32);
     entEls.forEach((e, id) => place(e, Number(e.dataset.x), Number(e.dataset.y)));
   }
   function place(e, x, y) {
@@ -314,7 +314,7 @@
         : 'かみつき ' + d.atk + '　体力 ' + en.hp + '/' + en.maxHp + '　距離 ' + dist;
       li.appendChild(el('div', 'sub', sub));
       if (d.skill) li.appendChild(gaugeHtml(1 - en.counter / d.skill.period, 'ecd' + (danger ? ' danger' : '')));
-      li.appendChild(gaugeHtml(en.hp / en.maxHp, ''));
+      // 体力のゲージは地図のマスの下に出ている（一覧には数字だけ）。一覧を低く保ち、地図と同じ画面に収めるため
       ul.appendChild(li);
     }
   }
@@ -615,7 +615,7 @@
 
     newGame(seed);
     if (AUTO) {
-      $('controls').querySelector('.help').textContent = '自動プレイ中（?auto=1）。音は出ない。';
+      document.querySelector('.help').textContent = '自動プレイ中（?auto=1）。音は出ない。';
       startAuto();
     }
 

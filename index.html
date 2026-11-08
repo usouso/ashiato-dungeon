@@ -26,6 +26,23 @@
       <div id="map-wrap" aria-label="ダンジョンの地図">
         <div id="map" class="map"></div>
       </div>
+      <!-- 地図のすぐ下：操作ボタンと敵一覧を横に並べる（スマホでも地図・残り歩数・ボタンが同じ画面に入るように） -->
+      <div id="play-row">
+        <div id="controls">
+          <div class="dpad" aria-label="移動">
+            <button type="button" class="btn dir" data-dx="0" data-dy="-1" aria-label="上">↑</button>
+            <button type="button" class="btn dir" data-dx="-1" data-dy="0" aria-label="左">←</button>
+            <button type="button" class="btn wait" id="btn-wait">待つ</button>
+            <button type="button" class="btn dir" data-dx="1" data-dy="0" aria-label="右">→</button>
+            <button type="button" class="btn dir" data-dx="0" data-dy="1" aria-label="下">↓</button>
+          </div>
+        </div>
+        <section class="panel" id="panel-enemies">
+          <h2>敵 <span class="dim">（発動までの残り歩数・近い順）</span></h2>
+          <ul id="enemy-list" class="list"></ul>
+        </section>
+      </div>
+      <p class="help">矢印キーで移動。敵の方へ進むと攻撃。スペースで待つ。宝箱と階段は歩いて乗る。</p>
       <p id="floor-info" class="floor-info"></p>
       <p class="legend">
         <span class="swatch player"></span>自分　<span class="swatch rat"></span>かみつきネズミ　<span class="swatch lizard"></span>とびつきトカゲ　<span class="swatch caterpillar"></span>ほのおイモムシ
@@ -42,10 +59,6 @@
         <h2>パッシブ</h2>
         <ul id="passive-list" class="list"></ul>
       </section>
-      <section class="panel" id="panel-enemies">
-        <h2>敵 <span class="dim">（発動までの残り歩数）</span></h2>
-        <ul id="enemy-list" class="list"></ul>
-      </section>
       <section class="panel" id="panel-log">
         <h2>できごと</h2>
         <ol id="log" class="log"></ol>
@@ -56,17 +69,6 @@
       </section>
     </aside>
   </main>
-
-  <footer id="controls">
-    <div class="dpad" aria-label="移動">
-      <button type="button" class="btn dir" data-dx="0" data-dy="-1" aria-label="上">↑</button>
-      <button type="button" class="btn dir" data-dx="-1" data-dy="0" aria-label="左">←</button>
-      <button type="button" class="btn wait" id="btn-wait">待つ</button>
-      <button type="button" class="btn dir" data-dx="1" data-dy="0" aria-label="右">→</button>
-      <button type="button" class="btn dir" data-dx="0" data-dy="1" aria-label="下">↓</button>
-    </div>
-    <p class="help">矢印キーで移動。敵の方へ進むと攻撃。スペースで待つ。宝箱と階段は歩いて乗る。</p>
-  </footer>
 
   <div id="overlay" class="overlay hidden" role="dialog" aria-modal="true">
     <div class="dialog" id="dialog"></div>
