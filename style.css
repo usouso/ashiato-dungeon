@@ -1,0 +1,272 @@
+/* あしあとダンジョン 試作1 — 見た目。演出用の class は fx- で始める */
+:root {
+  --tile: 40px;
+  --bg: #11131b;
+  --panel: #1d2130;
+  --panel-2: #262b3d;
+  --text: #f4f4f6;
+  --dim: #b9bdc9;
+  --floor: #313648;
+  --floor-line: #2a2e3e;
+  --wall: #191b25;
+  --player: #3f86e8;
+  --rat: #9a8466;
+  --lizard: #3f9f5f;
+  --cater: #d9742a;
+  --danger: #ff5a5a;
+  --warn: #ffcf5a;
+  --ok: #62d89b;
+  --gold: #e9c75a;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); }
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Noto Sans JP", "Yu Gothic UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  -webkit-text-size-adjust: 100%;
+}
+#app { max-width: 1180px; margin: 0 auto; padding: 8px; }
+h2 { font-size: 16px; margin: 0 0 6px; font-weight: 700; }
+b { font-weight: 700; }
+.dim { color: var(--dim); font-weight: 400; }
+.hidden { display: none !important; }
+
+/* 上の帯 */
+#top {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px;
+  background: var(--panel); border-radius: 10px; padding: 8px 14px;
+}
+.stat { font-size: 18px; white-space: nowrap; }
+.stat b { font-size: 22px; }
+.stat .label { color: var(--dim); font-size: 15px; margin-right: 2px; }
+.stat-hp { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.hp-gauge { width: 150px; height: 14px; }
+#top .small-btn { margin-left: auto; }
+
+/* ゲージ（数字と量の両方で見せる） */
+.gauge { position: relative; height: 10px; background: #0d0f16; border-radius: 6px; overflow: hidden; border: 1px solid #3a3f52; }
+.gauge-fill { height: 100%; background: var(--ok); transition: width .15s ease-out; }
+.gauge-fill.low { background: var(--danger); }
+.gauge-fill.cd { background: #7fb2ff; }
+.gauge-fill.ecd { background: var(--warn); }
+.gauge-fill.ecd.danger { background: var(--danger); }
+
+/* 通知（進化など。自動では消えない。クリックで閉じる） */
+.notice {
+  margin-top: 8px; padding: 10px 14px; border-radius: 10px; font-size: 18px; font-weight: 700;
+  background: #3b2e10; border: 2px solid var(--gold); color: #ffe9a6; cursor: pointer;
+}
+
+/* 本体 */
+#main { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 10px; margin-top: 8px; }
+@media (max-width: 900px) { #main { grid-template-columns: minmax(0, 1fr); } }
+
+#map-col { min-width: 0; }
+#map-wrap {
+  position: relative; background: #0b0c11; border-radius: 10px; padding: 6px;
+  display: flex; justify-content: flex-start; align-items: flex-start;
+  overflow-x: auto; overflow-y: hidden;
+}
+#map-wrap > .map { margin: 0 auto; flex: 0 0 auto; }
+.floor-info { margin: 8px 0 0; font-size: 16px; background: var(--panel); border-radius: 10px; padding: 8px 12px; }
+.legend { margin: 6px 0 0; color: var(--dim); font-size: 15px; line-height: 1.8; }
+.swatch.player { background: var(--player); }
+.legend-mark { display: inline-block; width: 12px; height: 12px; border-radius: 50%; vertical-align: -1px; margin-right: 6px; }
+.legend-mark.player { background: #8fc0ff; } .legend-mark.enemy { background: #e3cc8a; } .legend-mark.blood { background: #e04a4a; border-radius: 35% 65% 50% 50%; }
+.map {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(20, var(--tile));
+  grid-template-rows: repeat(11, var(--tile));
+  width: calc(var(--tile) * 20); height: calc(var(--tile) * 11);
+}
+.tile { position: relative; width: var(--tile); height: var(--tile); }
+.tile.wall { background: var(--wall); }
+.tile.floor { background: var(--floor); box-shadow: inset 0 0 0 1px var(--floor-line); }
+
+/* 痕跡：新しいほど濃い（opacity は JS が入れる） */
+.mark { position: absolute; left: 30%; top: 30%; width: 40%; height: 40%; border-radius: 50%; pointer-events: none; }
+.mark.player { background: #8fc0ff; }
+.mark.enemy { background: #e3cc8a; }
+.mark.blood { background: #e04a4a; border-radius: 35% 65% 50% 50%; width: 46%; height: 46%; left: 27%; top: 27%; }
+
+/* 床の物 */
+.ent { position: absolute; left: 0; top: 0; width: var(--tile); height: var(--tile);
+  display: flex; align-items: center; justify-content: center; pointer-events: none;
+  transition: transform .12s ease-out; }
+.ent.shard { z-index: 1; }
+.ent.enemy { z-index: 2; }
+.ent.player { z-index: 3; }
+.ent .body {
+  width: 76%; height: 76%; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: max(14px, calc(var(--tile) * 0.46)); color: #fff; line-height: 1;
+  box-shadow: 0 2px 0 rgba(0,0,0,.5);
+}
+/* 敵のマス：文字（体）は左下に寄せ、右上を頭上の残り歩数の数字に空ける（文字同士を重ねない） */
+.ent.enemy .body {
+  position: absolute; left: 1px; bottom: 5px; width: 62%; height: 62%;
+  font-size: max(14px, calc(var(--tile) * 0.42));
+}
+.ent.player .body { background: var(--player); border: 2px solid #cfe3ff; }
+.ent.rat .body { background: var(--rat); }
+.ent.lizard .body { background: var(--lizard); }
+.ent.caterpillar .body { background: var(--cater); }
+.ent.stairs .body, .ent.chest .body { border-radius: 18%; width: 84%; height: 84%; }
+.ent.stairs .body { background: #4a5168; color: #fff; }
+.ent.chest .body { background: #7a5a1e; border: 2px solid var(--gold); color: #ffe9a6; }
+.ent.chest.opened .body { background: #3a3324; border-color: #7b6a3a; color: #bba77a; }
+.ent.shard .body { width: 50%; height: 50%; background: #c9b7ff; color: #2a1f5a; font-size: max(13px, calc(var(--tile) * 0.36)); }
+
+/* 敵の頭上：残り歩数（数字）とゲージ */
+.ent .cd {
+  position: absolute; top: -4px; right: -2px; min-width: 1.3em; padding: 0 3px; border-radius: 8px; z-index: 1;
+  background: #0b0c11; color: #fff; border: 2px solid var(--warn);
+  font-size: max(13px, calc(var(--tile) * 0.34)); line-height: 1.15; font-weight: 700; text-align: center;
+}
+.ent .cd.danger { border-color: var(--danger); background: #3a0f0f; }
+.ent .cd.none { display: none; }
+/* 残り歩数の量（ゲージ）は左上。右端は数字の札の下に隠れてよい */
+.ent .egauge { position: absolute; left: 2px; top: 3px; width: 44%; height: 5px; background: #0b0c11; border-radius: 3px; overflow: hidden; }
+.ent .egauge > div { height: 100%; background: var(--warn); }
+.ent .egauge.danger > div { background: var(--danger); }
+.ent .hpbar { position: absolute; left: 2px; right: 2px; bottom: 0; height: 4px; background: #0b0c11; border-radius: 3px; overflow: hidden; }
+.ent .hpbar > div { height: 100%; background: var(--ok); }
+/* 頭上の数字はどの画面でも消さない（スマホではマスの最小 32px で読める大きさを保つ。ui.js の TILE_MIN） */
+
+/* 右の欄 */
+#side { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.panel { background: var(--panel); border-radius: 10px; padding: 10px 12px; }
+.list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.list li { background: var(--panel-2); border-radius: 8px; padding: 8px 10px; }
+.list .head { display: flex; justify-content: space-between; align-items: baseline; gap: 4px 8px; flex-wrap: wrap; }
+.list .name { font-weight: 700; font-size: 17px; }
+.list .num { font-size: 20px; font-weight: 700; white-space: nowrap; margin-left: auto; }
+.list .num.danger { color: var(--danger); }
+.list .sub { color: var(--dim); font-size: 15px; margin-top: 2px; }
+.list .gauge { margin-top: 5px; }
+.list li.danger { outline: 2px solid var(--danger); }
+.list li.empty { color: var(--dim); }
+.swatch { display: inline-block; width: 14px; height: 14px; border-radius: 50%; vertical-align: -2px; margin-right: 6px; }
+.swatch.rat { background: var(--rat); } .swatch.lizard { background: var(--lizard); } .swatch.caterpillar { background: var(--cater); }
+
+.log { margin: 0; padding: 0 0 0 1.4em; font-size: 15px; max-height: 190px; overflow-y: auto; }
+.log li { padding: 2px 0; }
+.log li.strong { font-weight: 700; color: #ffe9a6; }
+.log li.bad { color: #ffb0b0; }
+
+/* 地図の下：操作ボタン（左）と敵一覧（右）。地図・頭上の残り歩数・ボタンを同じ画面に入れる */
+#play-row { display: flex; align-items: flex-start; gap: 10px; margin-top: 8px; }
+#controls { flex: 0 0 auto; }
+#panel-enemies { flex: 1 1 auto; min-width: 0; }
+#panel-enemies .list { gap: 6px; }
+#panel-enemies .list li { padding: 6px 10px; }
+.dpad { display: grid; grid-template-columns: repeat(3, 56px); grid-template-rows: repeat(3, 56px); gap: 6px; }
+.dpad .dir:nth-child(1) { grid-column: 2; grid-row: 1; }
+.dpad .dir:nth-child(2) { grid-column: 1; grid-row: 2; }
+.dpad .wait { grid-column: 2; grid-row: 2; }
+.dpad .dir:nth-child(4) { grid-column: 3; grid-row: 2; }
+.dpad .dir:nth-child(5) { grid-column: 2; grid-row: 3; }
+.btn {
+  font: inherit; font-size: 17px; font-weight: 700; color: var(--text);
+  background: #343a52; border: 2px solid #4a5270; border-radius: 10px; padding: 8px 14px; cursor: pointer;
+  touch-action: manipulation;
+}
+.btn:active { transform: translateY(1px); background: #3f466a; }
+.btn.dir, .btn.wait { padding: 0; font-size: 20px; }
+.btn.wait { font-size: 16px; background: #2c3146; }
+.btn.primary { background: #2b5fa8; border-color: #5c93e0; }
+.help { color: var(--dim); font-size: 15px; margin: 8px 0 0; }
+
+/* スマホ（狭い画面）：上の帯とボタンを詰め、敵一覧は高さを抑えて地図のすぐ下に収める */
+@media (max-width: 600px) {
+  #app { padding: 6px; }
+  #top { gap: 2px 12px; padding: 6px 10px; }
+  .stat { font-size: 16px; }
+  .stat b { font-size: 19px; }
+  .stat .label { font-size: 15px; }
+  .hp-gauge { width: 80px; }
+  #top .small-btn { padding: 4px 10px; font-size: 15px; }
+  .dpad { grid-template-columns: repeat(3, 48px); grid-template-rows: repeat(3, 48px); gap: 5px; }
+  .btn.dir { font-size: 18px; }
+  .btn.wait { font-size: 15px; }
+  #panel-enemies { padding: 8px 8px; max-height: 300px; overflow-y: auto; }
+  #panel-enemies h2 { font-size: 15px; }
+  #panel-enemies .list li { padding: 5px 8px; }
+  #panel-enemies .list .name { font-size: 16px; }
+  #panel-enemies .list .num { font-size: 18px; }
+}
+
+/* 重ねる画面（レベルアップ、階段、死亡、帰還、設定） */
+.overlay {
+  position: fixed; inset: 0; background: rgba(5, 6, 10, .78);
+  display: flex; align-items: center; justify-content: center; padding: 12px; z-index: 20;
+}
+.dialog {
+  background: var(--panel); border-radius: 14px; padding: 18px 20px; width: min(560px, 100%);
+  max-height: 92vh; overflow-y: auto; border: 2px solid #3a4160;
+}
+.dialog h2 { font-size: 22px; margin-bottom: 10px; }
+.dialog p { margin: 6px 0; font-size: 17px; }
+.dialog .cause { font-size: 19px; font-weight: 700; color: #ffb0b0; }
+.dialog .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
+.dialog .row span { min-width: 7em; }
+.dialog input[type=range] { flex: 1; min-width: 120px; }
+.dialog select { font: inherit; font-size: 16px; padding: 4px 8px; }
+.choices { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+.choice {
+  text-align: left; display: block; width: 100%; padding: 10px 12px; border-radius: 10px;
+  background: var(--panel-2); border: 2px solid #4a5270; color: var(--text); font: inherit; cursor: pointer;
+}
+.choice:hover, .choice:focus { border-color: #8fb4ff; outline: none; }
+.choice .c-label { font-size: 18px; font-weight: 700; }
+.choice .c-key { display: inline-block; min-width: 1.6em; text-align: center; margin-right: 8px; background: #11131b; border-radius: 6px; font-size: 16px; padding: 0 4px; }
+.choice .c-sub { color: var(--dim); font-size: 15px; margin-top: 2px; }
+.choice .c-desc { font-size: 16px; margin-top: 2px; }
+.summary { list-style: none; padding: 0; margin: 8px 0; font-size: 17px; }
+.summary li { padding: 2px 0; }
+
+/* ------------------------------------------------------------ */
+/* 演出（fx-） */
+/* ------------------------------------------------------------ */
+.fx-shake-weak { animation: fx-shake-weak .18s linear; }
+.fx-shake-mid { animation: fx-shake-mid .22s linear; }
+@keyframes fx-shake-weak { 0%{transform:translate(0,0)} 25%{transform:translate(2px,-1px)} 50%{transform:translate(-2px,1px)} 75%{transform:translate(1px,1px)} 100%{transform:translate(0,0)} }
+@keyframes fx-shake-mid { 0%{transform:translate(0,0)} 20%{transform:translate(5px,-3px)} 40%{transform:translate(-5px,3px)} 60%{transform:translate(4px,2px)} 80%{transform:translate(-3px,-2px)} 100%{transform:translate(0,0)} }
+
+.fx-hit .body { animation: fx-hit .25s ease-out; }
+@keyframes fx-hit { 0%{filter:brightness(2.6)} 100%{filter:brightness(1)} }
+.fx-hurt .body { animation: fx-hurt .3s ease-out; }
+@keyframes fx-hurt { 0%{background:#ff3b3b; transform:scale(1.15)} 100%{transform:scale(1)} }
+.fx-die .body { animation: fx-die .35s ease-in forwards; }
+@keyframes fx-die { 0%{transform:scale(1); opacity:1} 100%{transform:scale(.2); opacity:0} }
+.fx-leap { transition: transform .22s cubic-bezier(.2,1.4,.5,1) !important; }
+
+/* 発動の輪（スキルの範囲をそのまま見せる） */
+.fx-burst {
+  position: absolute; pointer-events: none; border-radius: 12%; z-index: 5;
+  border: 3px solid #ffd27a; background: rgba(255, 190, 90, .25);
+  animation: fx-burst .55s ease-out forwards;
+}
+.fx-burst.enemy { border-color: #ff6a6a; background: rgba(255, 80, 80, .28); }
+.fx-burst.heal { border-color: #7fe7b0; background: rgba(100, 230, 160, .25); }
+@keyframes fx-burst { 0%{opacity:.2; transform:scale(.6)} 30%{opacity:1; transform:scale(1.05)} 100%{opacity:0; transform:scale(1)} }
+
+/* 画面全体の光は1手に1回まで（自分のスキル発動のときだけ、弱く） */
+.fx-flash::after {
+  content: ""; position: absolute; inset: 0; background: rgba(255, 230, 170, .22); pointer-events: none; border-radius: 10px;
+  animation: fx-flash .3s ease-out forwards;
+}
+@keyframes fx-flash { 0%{opacity:1} 100%{opacity:0} }
+
+/* 残り1歩の敵は脈打つ（色だけでなく動きでも分かるように） */
+.ent.fx-warn .body { animation: fx-warn .7s ease-in-out infinite alternate; }
+@keyframes fx-warn { 0%{box-shadow:0 2px 0 rgba(0,0,0,.5), 0 0 0 0 rgba(255,90,90,.9)} 100%{box-shadow:0 2px 0 rgba(0,0,0,.5), 0 0 0 6px rgba(255,90,90,0)} }
+
+/* 揺れを切る設定 */
+.no-shake .fx-shake-weak, .no-shake .fx-shake-mid { animation: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ent { transition: none; }
+}

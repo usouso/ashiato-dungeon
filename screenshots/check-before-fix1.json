@@ -1,0 +1,2036 @@
+{
+ "summary": {
+  "screens": 20,
+  "issues": 12,
+  "issuesByKind": {
+   "overlap": 6,
+   "not-in-first-screen": 6
+  },
+  "falsePositives": 276,
+  "falsePositivesByReason": {
+   "overlap/behind-modal": 129,
+   "overlap/hidden-by-scroll": 130,
+   "offscreen-x/inside-hscroll": 15,
+   "overlap/visible-parts-dont-overlap": 2
+  }
+ },
+ "screens": [
+  {
+   "texts": 66,
+   "visibleTexts": 66,
+   "issues": [
+    {
+     "kind": "overlap",
+     "a": "ト",
+     "b": "5",
+     "w": 3,
+     "h": 13
+    },
+    {
+     "kind": "not-in-first-screen",
+     "what": "操作ボタン",
+     "top": 1096,
+     "bottom": 1276,
+     "vh": 800
+    }
+   ],
+   "falsePositives": [],
+   "firstScreen": {
+    "地図": true,
+    "操作ボタン": false,
+    "敵の残り歩数（頭上）の個数": 1,
+    "敵の残り歩数（頭上）": true
+   },
+   "viewport": {
+    "w": 1280,
+    "h": 800
+   },
+   "name": "pc-01-start"
+  },
+  {
+   "texts": 90,
+   "visibleTexts": 13,
+   "issues": [],
+   "falsePositives": [
+    {
+     "kind": "overlap",
+     "a": "ほのお",
+     "b": "フロア1。宝箱の中身と階段は見えている。敵の頭上の数字は発動までの残り歩数。",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "残り 3 歩",
+     "b": "フロア1。宝箱の中身と階段は見えている。敵の頭上の数字は発動までの残り歩数。",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "周囲1マスの敵全員に4（7歩ごと）",
+     "b": "フロア1。宝箱の中身と階段は見えている。敵の頭上の数字は発動までの残り歩数。",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "周囲1マスの敵全員に4（7歩ごと）",
+     "b": "フロア1。宝箱の中身と階段は見えている。敵の頭上の数字は発動までの残り歩数。",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "ほのお発動！ …当たる敵がいない",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "パッシブ",
+     "b": "とびつきトカゲに3のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "パッシブ",
+     "b": "とびつきトカゲのかみつき。2のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "とびつきトカゲのかみつき。2のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "とびつきトカゲに3のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "とびつきトカゲの飛びつき！ 4のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "とびつきトカゲに3のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "とびつきトカゲを倒した。かけらが落ちた",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "かけらを拾った（1/3）",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（発動までの残り歩数）",
+     "b": "かみつきネズミに3のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（発動までの残り歩数）",
+     "b": "かみつきネズミのかみつき。2のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "このフロアの敵はいない",
+     "b": "かみつきネズミに3のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "できごと",
+     "b": "ほのお発動！ …当たる敵がいない",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "できごと",
+     "b": "かけらを拾った（2/3）",
+     "reason": "behind-modal"
+    }
+   ],
+   "firstScreen": null,
+   "viewport": {
+    "w": 1280,
+    "h": 800
+   },
+   "name": "pc-02-auto"
+  },
+  {
+   "texts": 111,
+   "visibleTexts": 79,
+   "issues": [
+    {
+     "kind": "overlap",
+     "a": "ト",
+     "b": "5",
+     "w": 3,
+     "h": 13
+    },
+    {
+     "kind": "overlap",
+     "a": "ト",
+     "b": "5",
+     "w": 3,
+     "h": 13
+    },
+    {
+     "kind": "overlap",
+     "a": "イ",
+     "b": "2",
+     "w": 3,
+     "h": 13
+    },
+    {
+     "kind": "not-in-first-screen",
+     "what": "操作ボタン",
+     "top": 1385,
+     "bottom": 1565,
+     "vh": 800
+    }
+   ],
+   "falsePositives": [
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "フロア1。宝箱の中身と階段は見えている。敵の頭上の数字は発動までの残り歩数。",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "フロア1。宝箱の中身と階段は見えている。敵の頭上の数字は発動までの残り歩数。",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "パッシブ",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "いのち",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "いのち",
+     "b": "ほのお発動！ …当たる敵がいない",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "最大体力＋10",
+     "b": "ほのお発動！ …当たる敵がいない",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "最大体力＋10",
+     "b": "待った",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "とびつきトカゲに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "とびつきトカゲに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "（発動までの残り歩数）",
+     "b": "とびつきトカゲに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "（発動までの残り歩数）",
+     "b": "とびつきトカゲを倒した。かけらが落ちた",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "ほのおイモムシ",
+     "b": "かけらを拾った（1/3）",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "炎（7歩ごと・5）　体力 10/10　距離 1",
+     "b": "かみつきネズミに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "とびつきトカゲ",
+     "b": "かみつきネズミを倒した。かけらが落ちた",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "残り 5 歩",
+     "b": "かみつきネズミを倒した。かけらが落ちた",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "飛びつき（5歩ごと・4）　体力 8/8　距離 11",
+     "b": "ほのお発動！ …当たる敵がいない",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "飛びつき（5歩ごと・4）　体力 8/8　距離 11",
+     "b": "かけらを拾った（2/3）",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "かみつきネズミ",
+     "b": "かみつきネズミのかみつき。2のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "スキルなし",
+     "b": "かみつきネズミのかみつき。2のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "かみつき 2　体力 6/6　距離 12",
+     "b": "かみつきネズミに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "とびつきトカゲ",
+     "b": "かけらを拾った（3/3）",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "とびつきトカゲ",
+     "b": "レベルアップ！ 1つ選ぶ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "飛びつき（5歩ごと・4）　体力 8/8　距離 14",
+     "b": "レベルアップ！ 1つ選ぶ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "飛びつき（5歩ごと・4）　体力 8/8　距離 14",
+     "b": "「ほのお+1」に強化した",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "飛びつき（5歩ごと・4）　体力 8/8　距離 14",
+     "b": "「ほのお+1」に強化した",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "飛びつき（5歩ごと・4）　体力 8/8　距離 14",
+     "b": "パッシブ「いのち」を得た",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "できごと",
+     "b": "階段に着いた。帰る？ 潜る？",
+     "reason": "hidden-by-scroll"
+    }
+   ],
+   "firstScreen": {
+    "地図": true,
+    "操作ボタン": false,
+    "敵の残り歩数（頭上）の個数": 3,
+    "敵の残り歩数（頭上）": true
+   },
+   "viewport": {
+    "w": 1280,
+    "h": 800
+   },
+   "name": "pc-02-auto-1"
+  },
+  {
+   "texts": 135,
+   "visibleTexts": 75,
+   "issues": [
+    {
+     "kind": "overlap",
+     "a": "ト",
+     "b": "5",
+     "w": 3,
+     "h": 13
+    },
+    {
+     "kind": "overlap",
+     "a": "ト",
+     "b": "5",
+     "w": 3,
+     "h": 13
+    },
+    {
+     "kind": "not-in-first-screen",
+     "what": "操作ボタン",
+     "top": 1304,
+     "bottom": 1484,
+     "vh": 800
+    }
+   ],
+   "falsePositives": [
+    {
+     "kind": "overlap",
+     "a": "設定",
+     "b": "かみつきネズミのかみつき。2のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "スキル",
+     "b": "かみつきネズミを倒した。かけらが落ちた",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "（歩くと残りが減る）",
+     "b": "かみつきネズミを倒した。かけらが落ちた",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "ほのお+2",
+     "b": "かけらを拾った（3/3）",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "ほのお+2",
+     "b": "レベルアップ！ 1つ選ぶ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "周囲1マスの敵全員に8（7歩ごと）",
+     "b": "「ほのお+1」に強化した",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "宝箱を開けた：いのち",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "階段に着いた。帰る？ 潜る？",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "パッシブ",
+     "b": "宝箱の中身：めじるし読み＋ほのお強化。敵 4 体。",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "パッシブ",
+     "b": "宝箱の中身：めじるし読み＋ほのお強化。敵 4 体。",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "いのち",
+     "b": "ほのお+1発動！ …当たる敵がいない",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "最大体力＋10",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "めじるし読み",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "痕跡が残る歩数が2倍",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "ほのおイモムシのかみつき。1のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "（発動までの残り歩数）",
+     "b": "ほのおイモムシの炎！ 誰にも当たらなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "とびつきトカゲ",
+     "b": "ほのおイモムシに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "残り 5 歩",
+     "b": "ほのおイモムシに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "飛びつき（5歩ごと・4）　体力 5/8　距離 1",
+     "b": "ほのおイモムシのかみつき。1のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "かみつきネズミ",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "スキルなし",
+     "b": "ほのおイモムシを倒した。かけらが落ちた",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "スキルなし",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "かみつき 2　体力 6/6　距離 3",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "とびつきトカゲ",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "とびつきトカゲ",
+     "b": "かけらを拾った（1/3）",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "飛びつき（5歩ごと・4）　体力 8/8　距離 7",
+     "b": "かけらを拾った（1/3）",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "飛びつき（5歩ごと・4）　体力 8/8　距離 7",
+     "b": "パッシブ「めじるし読み」を得た",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "できごと",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "hidden-by-scroll"
+    }
+   ],
+   "firstScreen": {
+    "地図": true,
+    "操作ボタン": false,
+    "敵の残り歩数（頭上）の個数": 2,
+    "敵の残り歩数（頭上）": true
+   },
+   "viewport": {
+    "w": 1280,
+    "h": 800
+   },
+   "name": "pc-02-auto-2"
+  },
+  {
+   "texts": 153,
+   "visibleTexts": 6,
+   "issues": [],
+   "falsePositives": [
+    {
+     "kind": "overlap",
+     "a": "設定",
+     "b": "宝箱を開けた：めじるし読み・ほのお+2",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "設定",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "階",
+     "b": "自",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "スキル",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（歩くと残りが減る）",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "ほのお+2",
+     "b": "ほのお+2発動！ …当たる敵がいない",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "残り 6 歩",
+     "b": "ほのお+2発動！ …当たる敵がいない",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "周囲1マスの敵全員に8（7歩ごと）",
+     "b": "待った",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "はやての刃",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "はやての刃",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "残り 2 歩",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "隣の敵全員に3（5歩ごと）",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "隣の敵全員に3（5歩ごと）",
+     "b": "とびつきトカゲの飛びつき！ 4のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "とびつきトカゲのかみつき。2のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "パッシブ",
+     "b": "とびつきトカゲを倒した。かけらが落ちた",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "いのち",
+     "b": "かみつきネズミに3のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "いのち",
+     "b": "かみつきネズミのかみつき。2のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "最大体力＋10",
+     "b": "かみつきネズミのかみつき。2のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "最大体力＋10",
+     "b": "かみつきネズミに3のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "めじるし読み",
+     "b": "かみつきネズミを倒した。かけらが落ちた",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "めじるし読み",
+     "b": "待った",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "痕跡が残る歩数が2倍",
+     "b": "待った",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "痕跡が残る歩数が2倍",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "ほのお+2発動！ …当たる敵がいない",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（発動までの残り歩数）",
+     "b": "かけらを拾った（3/3）",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（発動までの残り歩数）",
+     "b": "レベルアップ！ 1つ選ぶ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "このフロアの敵はいない",
+     "b": "スキル「はやての刃」を覚えた",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "できごと",
+     "b": "とびつきトカゲのかみつき。2のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "できごと",
+     "b": "とびつきトカゲに3のダメージ",
+     "reason": "behind-modal"
+    }
+   ],
+   "firstScreen": null,
+   "viewport": {
+    "w": 1280,
+    "h": 800
+   },
+   "name": "pc-02-auto-3"
+  },
+  {
+   "texts": 79,
+   "visibleTexts": 13,
+   "issues": [],
+   "falsePositives": [
+    {
+     "kind": "overlap",
+     "a": "ト",
+     "b": "5",
+     "reason": "behind-modal"
+    }
+   ],
+   "firstScreen": null,
+   "viewport": {
+    "w": 1280,
+    "h": 800
+   },
+   "name": "pc-03-levelup"
+  },
+  {
+   "texts": 77,
+   "visibleTexts": 6,
+   "issues": [],
+   "falsePositives": [
+    {
+     "kind": "overlap",
+     "a": "ト",
+     "b": "5",
+     "reason": "behind-modal"
+    }
+   ],
+   "firstScreen": null,
+   "viewport": {
+    "w": 1280,
+    "h": 800
+   },
+   "name": "pc-04-stairs"
+  },
+  {
+   "texts": 76,
+   "visibleTexts": 9,
+   "issues": [],
+   "falsePositives": [
+    {
+     "kind": "overlap",
+     "a": "ト",
+     "b": "5",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "できごと",
+     "b": "フロア1。宝箱の中身と階段は見えている。敵の頭上の数字は発動までの残り歩数。",
+     "reason": "behind-modal"
+    }
+   ],
+   "firstScreen": null,
+   "viewport": {
+    "w": 1280,
+    "h": 800
+   },
+   "name": "pc-05-dead"
+  },
+  {
+   "texts": 72,
+   "visibleTexts": 6,
+   "issues": [],
+   "falsePositives": [
+    {
+     "kind": "overlap",
+     "a": "ト",
+     "b": "5",
+     "reason": "behind-modal"
+    }
+   ],
+   "firstScreen": null,
+   "viewport": {
+    "w": 1280,
+    "h": 800
+   },
+   "name": "pc-06-clear"
+  },
+  {
+   "texts": 72,
+   "visibleTexts": 6,
+   "issues": [],
+   "falsePositives": [
+    {
+     "kind": "overlap",
+     "a": "ト",
+     "b": "5",
+     "reason": "behind-modal"
+    }
+   ],
+   "firstScreen": null,
+   "viewport": {
+    "w": 1280,
+    "h": 800
+   },
+   "name": "pc-07-settings"
+  },
+  {
+   "texts": 64,
+   "visibleTexts": 62,
+   "issues": [
+    {
+     "kind": "not-in-first-screen",
+     "what": "操作ボタン",
+     "top": 1597,
+     "bottom": 1777,
+     "vh": 844
+    }
+   ],
+   "falsePositives": [
+    {
+     "kind": "offscreen-x",
+     "text": "階",
+     "reason": "inside-hscroll"
+    },
+    {
+     "kind": "offscreen-x",
+     "text": "ネ",
+     "reason": "inside-hscroll"
+    }
+   ],
+   "firstScreen": {
+    "地図": true,
+    "操作ボタン": false,
+    "敵の残り歩数（頭上）の個数": 0
+   },
+   "viewport": {
+    "w": 390,
+    "h": 844
+   },
+   "name": "sp-01-start"
+  },
+  {
+   "texts": 90,
+   "visibleTexts": 14,
+   "issues": [],
+   "falsePositives": [
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "フロア1。宝箱の中身と階段は見えている。敵の頭上の数字は発動までの残り歩数。",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "ほのお発動！ …当たる敵がいない",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "パッシブ",
+     "b": "とびつきトカゲに3のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "パッシブ",
+     "b": "とびつきトカゲのかみつき。2のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "とびつきトカゲに3のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "とびつきトカゲの飛びつき！ 4のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "とびつきトカゲに3のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "とびつきトカゲを倒した。かけらが落ちた",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "かけらを拾った（1/3）",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（発動までの残り歩数）",
+     "b": "かみつきネズミに3のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（発動までの残り歩数）",
+     "b": "かみつきネズミのかみつき。2のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "このフロアの敵はいない",
+     "b": "かみつきネズミに3のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "できごと",
+     "b": "ほのお発動！ …当たる敵がいない",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "できごと",
+     "b": "かけらを拾った（2/3）",
+     "reason": "behind-modal"
+    }
+   ],
+   "firstScreen": null,
+   "viewport": {
+    "w": 390,
+    "h": 844
+   },
+   "name": "sp-02-auto"
+  },
+  {
+   "texts": 103,
+   "visibleTexts": 71,
+   "issues": [
+    {
+     "kind": "not-in-first-screen",
+     "what": "操作ボタン",
+     "top": 1886,
+     "bottom": 2066,
+     "vh": 844
+    }
+   ],
+   "falsePositives": [
+    {
+     "kind": "offscreen-x",
+     "text": "階",
+     "reason": "inside-hscroll"
+    },
+    {
+     "kind": "offscreen-x",
+     "text": "ネ",
+     "reason": "inside-hscroll"
+    },
+    {
+     "kind": "offscreen-x",
+     "text": "ト",
+     "reason": "inside-hscroll"
+    },
+    {
+     "kind": "offscreen-x",
+     "text": "ト",
+     "reason": "inside-hscroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "パッシブ",
+     "b": "フロア1。宝箱の中身と階段は見えている。敵の頭上の数字は発動までの残り歩数。",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "いのち",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "いのち",
+     "b": "ほのお発動！ …当たる敵がいない",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "最大体力＋10",
+     "b": "ほのお発動！ …当たる敵がいない",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "最大体力＋10",
+     "b": "待った",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "とびつきトカゲに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "とびつきトカゲに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "（発動までの残り歩数）",
+     "b": "とびつきトカゲに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "（発動までの残り歩数）",
+     "b": "とびつきトカゲを倒した。かけらが落ちた",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "ほのおイモムシ",
+     "b": "かけらを拾った（1/3）",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "炎（7歩ごと・5）　体力 10/10　距離 1",
+     "b": "かみつきネズミに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "とびつきトカゲ",
+     "b": "かみつきネズミを倒した。かけらが落ちた",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "残り 5 歩",
+     "b": "かみつきネズミを倒した。かけらが落ちた",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "飛びつき（5歩ごと・4）　体力 8/8　距離 11",
+     "b": "ほのお発動！ …当たる敵がいない",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "かみつきネズミ",
+     "b": "かみつきネズミに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "かみつきネズミ",
+     "b": "かみつきネズミのかみつき。2のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "スキルなし",
+     "b": "かみつきネズミのかみつき。2のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "かみつき 2　体力 6/6　距離 12",
+     "b": "かみつきネズミのかみつき。2のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "とびつきトカゲ",
+     "b": "かけらを拾った（3/3）",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "残り 5 歩",
+     "b": "かみつきネズミを倒した。かけらが落ちた",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "飛びつき（5歩ごと・4）　体力 8/8　距離 14",
+     "b": "レベルアップ！ 1つ選ぶ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "できごと",
+     "b": "宝箱を開けた：いのち",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "できごと",
+     "b": "ほのお+1発動！ …当たる敵がいない",
+     "reason": "visible-parts-dont-overlap"
+    }
+   ],
+   "firstScreen": {
+    "地図": true,
+    "操作ボタン": false,
+    "敵の残り歩数（頭上）の個数": 0
+   },
+   "viewport": {
+    "w": 390,
+    "h": 844
+   },
+   "name": "sp-02-auto-1"
+  },
+  {
+   "texts": 122,
+   "visibleTexts": 72,
+   "issues": [
+    {
+     "kind": "not-in-first-screen",
+     "what": "操作ボタン",
+     "top": 1804,
+     "bottom": 1984,
+     "vh": 844
+    }
+   ],
+   "falsePositives": [
+    {
+     "kind": "overlap",
+     "a": "階",
+     "b": "とびつきトカゲのかみつき。2のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "宝",
+     "b": "フロア1。宝箱の中身と階段は見えている。敵の頭上の数字は発動までの残り歩数。",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "ネ",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "ト",
+     "b": "とびつきトカゲのかみつき。2のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "ト",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "ト",
+     "b": "ほのお発動！ …当たる敵がいない",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "自",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "自",
+     "b": "ほのお発動！ …当たる敵がいない",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "このフロアの宝箱は開けた。階段（階）に乗ると「帰る／潜る」を選べる。",
+     "b": "かみつきネズミに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "このフロアの宝箱は開けた。階段（階）に乗ると「帰る／潜る」を選べる。",
+     "b": "かみつきネズミに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "このフロアの宝箱は開けた。階段（階）に乗ると「帰る／潜る」を選べる。",
+     "b": "かみつきネズミのかみつき。2のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "自分",
+     "b": "かみつきネズミに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "かみつきネズミ",
+     "b": "かみつきネズミに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "とびつきトカゲ",
+     "b": "かみつきネズミに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "ほのおイモムシ",
+     "b": "かみつきネズミを倒した。かけらが落ちた",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "自分の足跡",
+     "b": "かみつきネズミを倒した。かけらが落ちた",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "敵の足跡",
+     "b": "かみつきネズミを倒した。かけらが落ちた",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "スキル",
+     "b": "かけらを拾った（2/3）",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "（歩くと残りが減る）",
+     "b": "かけらを拾った（2/3）",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "ほのお+2",
+     "b": "待った",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "ほのお+2",
+     "b": "かみつきネズミに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "周囲1マスの敵全員に8（7歩ごと）",
+     "b": "かみつきネズミに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "周囲1マスの敵全員に8（7歩ごと）",
+     "b": "かみつきネズミのかみつき。2のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "かみつきネズミを倒した。かけらが落ちた",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "レベルアップ！ 1つ選ぶ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "パッシブ",
+     "b": "パッシブ「いのち」を得た",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "いのち",
+     "b": "宝箱を開けた：いのち",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "いのち",
+     "b": "ほのお+1発動！ …当たる敵がいない",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "最大体力＋10",
+     "b": "ほのお+1発動！ …当たる敵がいない",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "最大体力＋10",
+     "b": "階段に着いた。帰る？ 潜る？",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "めじるし読み",
+     "b": "フロア2に降りた",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "めじるし読み",
+     "b": "宝箱の中身：めじるし読み＋ほのお強化。敵 4 体。",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "痕跡が残る歩数が2倍",
+     "b": "宝箱の中身：めじるし読み＋ほのお強化。敵 4 体。",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "痕跡が残る歩数が2倍",
+     "b": "宝箱の中身：めじるし読み＋ほのお強化。敵 4 体。",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "ほのお+1発動！ …当たる敵がいない",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "（発動までの残り歩数）",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "（発動までの残り歩数）",
+     "b": "ほのおイモムシに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "とびつきトカゲ",
+     "b": "ほのおイモムシのかみつき。1のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "とびつきトカゲ",
+     "b": "ほのおイモムシの炎！ 誰にも当たらなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "残り 5 歩",
+     "b": "ほのおイモムシのかみつき。1のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "残り 5 歩",
+     "b": "ほのおイモムシの炎！ 誰にも当たらなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "飛びつき（5歩ごと・4）　体力 5/8　距離 1",
+     "b": "ほのおイモムシの炎！ 誰にも当たらなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "飛びつき（5歩ごと・4）　体力 5/8　距離 1",
+     "b": "待った",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "かみつきネズミ",
+     "b": "ほのおイモムシのかみつき。1のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "かみつきネズミ",
+     "b": "ほのおイモムシに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "スキルなし",
+     "b": "ほのおイモムシのかみつき。1のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "かみつき 2　体力 6/6　距離 3",
+     "b": "ほのおイモムシに3のダメージ",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "かみつき 2　体力 6/6　距離 3",
+     "b": "ほのお+1発動！ ほのおイモムシに6",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "とびつきトカゲ",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "残り 5 歩",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "飛びつき（5歩ごと・4）　体力 8/8　距離 7",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "できごと",
+     "b": "「ほのお+2」に強化した",
+     "reason": "hidden-by-scroll"
+    },
+    {
+     "kind": "overlap",
+     "a": "できごと",
+     "b": "宝箱を開けた：めじるし読み・ほのお+2",
+     "reason": "visible-parts-dont-overlap"
+    }
+   ],
+   "firstScreen": {
+    "地図": true,
+    "操作ボタン": false,
+    "敵の残り歩数（頭上）の個数": 0
+   },
+   "viewport": {
+    "w": 390,
+    "h": 844
+   },
+   "name": "sp-02-auto-2"
+  },
+  {
+   "texts": 145,
+   "visibleTexts": 8,
+   "issues": [],
+   "falsePositives": [
+    {
+     "kind": "overlap",
+     "a": "フロア",
+     "b": "パッシブ「いのち」を得た",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "2",
+     "b": "「ほのお+1」に強化した",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "2",
+     "b": "パッシブ「いのち」を得た",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "/3",
+     "b": "「ほのお+1」に強化した",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "/3",
+     "b": "パッシブ「いのち」を得た",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "体力",
+     "b": "宝箱を開けた：いのち",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "16",
+     "b": "宝箱を開けた：いのち",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "16",
+     "b": "ほのお+1発動！ …当たる敵がいない",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "/",
+     "b": "宝箱を開けた：いのち",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "/",
+     "b": "ほのお+1発動！ …当たる敵がいない",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "40",
+     "b": "宝箱を開けた：いのち",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "40",
+     "b": "ほのお+1発動！ …当たる敵がいない",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "かけら",
+     "b": "階段に着いた。帰る？ 潜る？",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "1",
+     "b": "階段に着いた。帰る？ 潜る？",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "1",
+     "b": "フロア2に降りた",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "/3",
+     "b": "階段に着いた。帰る？ 潜る？",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "歩数",
+     "b": "階段に着いた。帰る？ 潜る？",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "57",
+     "b": "階段に着いた。帰る？ 潜る？",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "階",
+     "b": "自",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "階",
+     "b": "ほのおイモムシの炎！ 誰にも当たらなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "宝",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "自",
+     "b": "ほのおイモムシの炎！ 誰にも当たらなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "このフロアの宝箱は開けた。階段（階）に乗ると「帰る／潜る」を選べる。",
+     "b": "ほのおイモムシを倒した。かけらが落ちた",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "このフロアの宝箱は開けた。階段（階）に乗ると「帰る／潜る」を選べる。",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "このフロアの宝箱は開けた。階段（階）に乗ると「帰る／潜る」を選べる。",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "自分",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "自分",
+     "b": "かけらを拾った（1/3）",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "かみつきネズミ",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "かみつきネズミ",
+     "b": "かけらを拾った（1/3）",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "とびつきトカゲ",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "ほのおイモムシ",
+     "b": "パッシブ「めじるし読み」を得た",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "自分の足跡",
+     "b": "パッシブ「めじるし読み」を得た",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "敵の足跡",
+     "b": "パッシブ「めじるし読み」を得た",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "スキル",
+     "b": "「ほのお+2」に強化した",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "スキル",
+     "b": "宝箱を開けた：めじるし読み・ほのお+2",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（歩くと残りが減る）",
+     "b": "「ほのお+2」に強化した",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（歩くと残りが減る）",
+     "b": "宝箱を開けた：めじるし読み・ほのお+2",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "ほのお+2",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "残り 6 歩",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "周囲1マスの敵全員に8（7歩ごと）",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "はやての刃",
+     "b": "待った",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "はやての刃",
+     "b": "とびつきトカゲに3のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "隣の敵全員に3（5歩ごと）",
+     "b": "とびつきトカゲに3のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "隣の敵全員に3（5歩ごと）",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "とびつきトカゲに3のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "パッシブ",
+     "b": "とびつきトカゲに3のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "パッシブ",
+     "b": "とびつきトカゲを倒した。かけらが落ちた",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "いのち",
+     "b": "かみつきネズミに3のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "最大体力＋10",
+     "b": "かみつきネズミのかみつき。2のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "めじるし読み",
+     "b": "かみつきネズミに3のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "めじるし読み",
+     "b": "かみつきネズミを倒した。かけらが落ちた",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "痕跡が残る歩数が2倍",
+     "b": "かみつきネズミを倒した。かけらが落ちた",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "痕跡が残る歩数が2倍",
+     "b": "待った",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "とびつきトカゲの飛びつき！ 届かなかった",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（空き）",
+     "b": "ほのお+2発動！ …当たる敵がいない",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（発動までの残り歩数）",
+     "b": "かけらを拾った（3/3）",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "（発動までの残り歩数）",
+     "b": "レベルアップ！ 1つ選ぶ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "このフロアの敵はいない",
+     "b": "スキル「はやての刃」を覚えた",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "できごと",
+     "b": "とびつきトカゲのかみつき。2のダメージ",
+     "reason": "behind-modal"
+    },
+    {
+     "kind": "overlap",
+     "a": "できごと",
+     "b": "とびつきトカゲに3のダメージ",
+     "reason": "behind-modal"
+    }
+   ],
+   "firstScreen": null,
+   "viewport": {
+    "w": 390,
+    "h": 844
+   },
+   "name": "sp-02-auto-3"
+  },
+  {
+   "texts": 78,
+   "visibleTexts": 14,
+   "issues": [],
+   "falsePositives": [
+    {
+     "kind": "offscreen-x",
+     "text": "階",
+     "reason": "inside-hscroll"
+    },
+    {
+     "kind": "offscreen-x",
+     "text": "ネ",
+     "reason": "inside-hscroll"
+    }
+   ],
+   "firstScreen": null,
+   "viewport": {
+    "w": 390,
+    "h": 844
+   },
+   "name": "sp-03-levelup"
+  },
+  {
+   "texts": 76,
+   "visibleTexts": 8,
+   "issues": [],
+   "falsePositives": [
+    {
+     "kind": "offscreen-x",
+     "text": "階",
+     "reason": "inside-hscroll"
+    },
+    {
+     "kind": "offscreen-x",
+     "text": "ネ",
+     "reason": "inside-hscroll"
+    }
+   ],
+   "firstScreen": null,
+   "viewport": {
+    "w": 390,
+    "h": 844
+   },
+   "name": "sp-04-stairs"
+  },
+  {
+   "texts": 75,
+   "visibleTexts": 11,
+   "issues": [],
+   "falsePositives": [
+    {
+     "kind": "offscreen-x",
+     "text": "階",
+     "reason": "inside-hscroll"
+    }
+   ],
+   "firstScreen": null,
+   "viewport": {
+    "w": 390,
+    "h": 844
+   },
+   "name": "sp-05-dead"
+  },
+  {
+   "texts": 70,
+   "visibleTexts": 6,
+   "issues": [],
+   "falsePositives": [
+    {
+     "kind": "offscreen-x",
+     "text": "階",
+     "reason": "inside-hscroll"
+    },
+    {
+     "kind": "offscreen-x",
+     "text": "ネ",
+     "reason": "inside-hscroll"
+    }
+   ],
+   "firstScreen": null,
+   "viewport": {
+    "w": 390,
+    "h": 844
+   },
+   "name": "sp-06-clear"
+  },
+  {
+   "texts": 71,
+   "visibleTexts": 7,
+   "issues": [],
+   "falsePositives": [
+    {
+     "kind": "offscreen-x",
+     "text": "階",
+     "reason": "inside-hscroll"
+    },
+    {
+     "kind": "offscreen-x",
+     "text": "ネ",
+     "reason": "inside-hscroll"
+    }
+   ],
+   "firstScreen": null,
+   "viewport": {
+    "w": 390,
+    "h": 844
+   },
+   "name": "sp-07-settings"
+  }
+ ]
+}
