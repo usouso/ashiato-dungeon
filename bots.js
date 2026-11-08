@@ -75,7 +75,7 @@
       const p = Sim.powerOf(sk);
       if (def.kind === 'area') g += p * s.enemies.filter(e => Sim.chebyshev(e.x, e.y, x, y) <= def.radius).length;
       else if (def.kind === 'adjacent') g += p * s.enemies.filter(e => Sim.manhattan(e.x, e.y, x, y) === 1).length;
-      else if (def.kind === 'nearest') g += s.enemies.length ? p : 0;
+      else if (def.kind === 'nearest') g += s.enemies.some(e => Sim.manhattan(e.x, e.y, x, y) <= def.range) ? p : 0;
       else if (def.kind === 'heal') g += Math.min(p, s.player.maxHp - s.player.hp);
     }
     return g;

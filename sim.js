@@ -16,7 +16,7 @@
 
   const SKILLS = {
     honoo:    { id: 'honoo',    name: 'ほのお',       period: 7,  power: 4, kind: 'area',     radius: 1, desc: '周囲1マスの敵全員に{p}' },
-    kaminari: { id: 'kaminari', name: 'かみなり',     period: 10, power: 7, kind: 'nearest',             desc: 'いちばん近い敵1体に{p}' },
+    kaminari: { id: 'kaminari', name: 'かみなり',     period: 10, power: 7, kind: 'nearest',  range: 6,  desc: '6マス以内でいちばん近い敵1体に{p}' },
     kaifuku:  { id: 'kaifuku',  name: 'かいふくの風', period: 12, power: 4, kind: 'heal',                desc: '自分の体力を{p}回復' },
     hayate:   { id: 'hayate',   name: 'はやての刃',   period: 5,  power: 3, kind: 'adjacent',            desc: '隣の敵全員に{p}' },
     // 進化先（試作では1つだけ）
@@ -239,8 +239,9 @@
     } else if (def.kind === 'adjacent') {
       targets = s.enemies.filter(o => manhattan(px, py, o.x, o.y) === 1);
     } else if (def.kind === 'nearest') {
+      // 射程（マンハッタン距離）の中でいちばん近い1体。壁は遮らない。射程の外には当たらない
       let best = null, bd = Infinity;
-      for (const o of s.enemies) { const d = manhattan(px, py, o.x, o.y); if (d < bd) { bd = d; best = o; } }
+      for (const o of s.enemies) { const d = manhattan(px, py, o.x, o.y); if (d <= def.range && d < bd) { bd = d; best = o; } }
       if (best) targets = [best];
     } else if (def.kind === 'heal') {
       const before = s.player.hp;

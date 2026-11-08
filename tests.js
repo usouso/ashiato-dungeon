@@ -167,15 +167,67 @@ test('ほのお：7歩目に自動発動、周囲1マス（斜め含む）の敵
 
 test('かみなり：10歩目に、いちばん近い敵1体だけに7', () => {
   const s = arena({ skills: ['kaminari'] });
-  const near = addEnemy(s, 'caterpillar', 10, 8);  // 距離3（9歩後の着地 (11,5) からは4）
-  const far = addEnemy(s, 'caterpillar', 17, 5);   // 距離7（着地 (11,5) からは6）
+  const near = addEnemy(s, 'caterpillar', 10, 8);  // 着地 (10,5) から距離3
+  const far = addEnemy(s, 'caterpillar', 15, 5);   // 着地 (10,5) から距離5（射程内だが、いちばん近くはない）
   near.counter = far.counter = 99;
-  walk(s, 9, [[near, 10, 8], [far, 17, 5]]);
+  walk(s, 9, [[near, 10, 8], [far, 15, 5]]);
   eq(s.player.skills[0].remaining, 1);
   eq(s.player.x + ',' + s.player.y, '11,5');
   Sim.act(s, move(-1, 0)); // 10歩目、着地 (10,5)
   eq(near.hp, 3); eq(far.hp, 10);
   eq(s.player.skills[0].remaining, 10);
+});
+
+test('かみなり：射程は6マス（マンハッタン距離）。7マス先の敵には当たらない。壁は遮らない', () => {
+  const s = arena({ skills: ['kaminari'] });
+  eq(Sim.SKILLS.kaminari.range, 6);
+  const edge = addEnemy(s, 'caterpillar', 16, 5);  // 着地 (10,5) から距離6 → 当たる
+  const out = addEnemy(s, 'caterpillar', 10, 9);   // 距離4 → いちばん近い
+  edge.counter = out.counter = 99;
+  walk(s, 9, [[edge, 16, 5], [out, 10, 9]]);
+  Sim.act(s, move(-1, 0));
+  eq(out.hp, 3, 'いちばん近い敵に当たる'); eq(edge.hp, 10);
+  // 距離7の敵だけ → 空振り
+  const t = arena({ skills: ['kaminari'] });
+  const far7 = addEnemy(t, 'caterpillar', 17, 5);  // 着地 (10,5) から距離7
+  far7.counter = 99;
+  walk(t, 9, [[far7, 17, 5]]);
+  const ev = Sim.act(t, move(-1, 0));
+  const sk = ev.find(v => v.t === 'skill' && v.who === 'player');
+  ok(sk && sk.hits.length === 0, '射程の外なら当たらない');
+  eq(far7.hp, 10);
+  eq(t.player.skills[0].remaining, 10, '空振りでも残りは戻る');
+  // ちょうど6マスなら、間に壁があっても当たる（ルールは単純に保つ）
+  const u = arena({ skills: ['kaminari'] });
+  const rows = u.map.slice();
+  rows[5] = rows[5].slice(0, 13) + '#' + rows[5].slice(14);  // (13,5) を壁に
+  u.map = rows;
+  const behind = addEnemy(u, 'caterpillar', 16, 5);
+  behind.counter = 99;
+  walk(u, 9, [[behind, 16, 5]]);
+  Sim.act(u, move(-1, 0));
+  eq(behind.hp, 3, '壁の向こうでも距離6なら当たる');
+});
+
+test('かみなり：離れた静止敵を、安全な場所の往復だけでは倒せない（Codex 指摘1の再現）', () => {
+  // 自分 (1,1)、イモムシ (18,9)。(1,1)↔(2,1) を往復して歩数だけ稼ぐ。
+  // 旧ルール（射程無制限）では 20 手・被ダメ 0 で倒せていた。
+  const s = arena({ skills: ['kaminari'] });
+  s.player.x = 1; s.player.y = 1;
+  const c = addEnemy(s, 'caterpillar', 18, 9);
+  for (let i = 0; i < 100; i++) Sim.act(s, move(i % 2 === 0 ? 1 : -1, 0));
+  eq(s.steps, 100);
+  eq(s.stats.skillFires.kaminari, 10, 'かみなりは10回発動している');
+  eq(c.hp, 10, 'イモムシは無傷のまま');
+  eq(s.player.hp, 30);
+  eq(c.x + ',' + c.y, '18,9', 'イモムシは遠いとじっとしている');
+  // 近づけば（距離6以内）当たる：差が「位置取り」で生まれることの確認
+  const t = arena({ skills: ['kaminari'] });
+  t.player.x = 12; t.player.y = 9;               // (18,9) から距離6
+  const d = addEnemy(t, 'caterpillar', 18, 9);
+  for (let i = 0; i < 10; i++) { Sim.act(t, move(i % 2 === 0 ? -1 : 1, 0)); d.x = 18; d.y = 9; }
+  eq(t.player.x, 12);
+  eq(d.hp, 3, '距離6で発動すれば当たる');
 });
 
 test('かいふくの風：12歩目に体力を4回復（最大を超えない）', () => {
